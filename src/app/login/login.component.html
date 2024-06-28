@@ -1,0 +1,37 @@
+<div class="conatiner">
+    <div class="logo">
+        <img src="assets/NOTETECH LOGO 1 (1).png" width="200px" height="50px">
+    </div>
+    <div class="container">
+        <form #yourForm="ngForm" class="login" (ngSubmit)="loginCheck()">
+            <input type="text" placeholder="Username" ngModel required minlength="4" [(ngModel)]="userName"
+                name="userName">
+            <div class="error" style="color: red;"
+                *ngIf="yourForm.controls['userName'].touched && yourForm.controls['userName'].errors?.['required']">
+                Username is required.
+            </div>
+
+            <div class="error" style="color: red;"
+                *ngIf="yourForm.controls['userName'].touched && yourForm.controls['userName'].errors?.['minlength']">
+                Username must be at least 6 characters long.
+            </div>
+
+            <input type="password" placeholder="Password" ngModel required minlength="4" [(ngModel)]="userPassword"
+                name="password" autocomplete="off">
+            <div class="error" style="color: red;"
+                *ngIf="yourForm.controls['password'].touched && yourForm.controls['password'].errors?.['required']">
+                Password is required.
+            </div>
+            <div class="error" style="color: red;"
+                *ngIf="yourForm.controls['password'].touched && yourForm.controls['password'].errors?.['minlength']">
+                Password must be at least 6 characters long.
+            </div>
+            <button type="submit" [disabled]="!yourForm.valid">Login</button>
+            <span class="sign-up">
+                <a href="" routerLink="/register" routerLinkActive="active">New User? Sign up</a>
+            </span>
+        </form>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

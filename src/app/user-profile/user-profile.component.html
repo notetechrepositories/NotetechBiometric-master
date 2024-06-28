@@ -1,0 +1,212 @@
+<div id='settings' ontouchstart>
+    <input checked class='nav' name='nav' type='radio'>
+    <span class='nav'>Personal Information</span>
+    <input class='nav' name='nav' type='radio'>
+    <span class='nav'>Address Details</span>
+    <input class='nav' name='nav' type='radio'>
+    <span class='nav'>Employment Information</span>
+    <input class='nav' name='nav' type='radio'>
+    <span class='nav'>Professional Details</span>
+    <main class='content'>
+        <form #employeeForm="ngForm">
+            <!-- Personal Information Section -->
+            <section id='profile'>
+                <ul>
+                    <li>
+                        <fieldset class='material'>
+                            <div>
+                                <input required type='text' [(ngModel)]="employeeDetails.employeeName"
+                                    name="employeeName">
+                                <label>Full Name</label>
+                                <hr>
+                            </div>
+                        </fieldset>
+                    </li>
+                    <li>
+                        <fieldset class='material'>
+                            <div>
+                                <input required type='text'  [value]="employeeDetails.birthDate | date: 'dd/MM/yyyy'" >
+                                <label>Date of Birth</label>
+                                <hr>
+                            </div>
+                        </fieldset>
+                    </li>
+                    <li>
+                        <fieldset class='material'>
+                            <div>
+                                <input required type='text' [(ngModel)]="employeeDetails.gender" name="gender">
+                                <label>Gender</label>
+                                <hr>
+                            </div>
+                        </fieldset>
+                        
+                    </li>
+                    <li>
+                        <fieldset class='material'>
+                            <div>
+                                <input required type='text' [(ngModel)]="employeeDetails.maritalStatus"
+                                    name="MaritalStatus">
+                                <label>Marital Status</label>
+                                <hr>
+                            </div>
+                        </fieldset>
+                    </li>
+                    <li *ngIf="employeeDetails.birthDate">
+                        <fieldset class='material'>
+                            <div>
+                                <input required type='text' [(ngModel)]="employeeDetails.email" name="email">
+                                <label>Email</label>
+                                <hr>
+                            </div>
+                        </fieldset>
+                    </li>
+                    <li>
+                        <fieldset class='material'>
+                            <div>
+                                <input required type='text' [(ngModel)]="employeeDetails.contactInformation"
+                                    name="ContactInformation">
+                                <label>Contact Information</label>
+                                <hr>
+                            </div>
+                        </fieldset>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Address Details Section -->
+            <section id='account'>
+                <ul>
+                    <li>
+                        <fieldset class='material'>
+                            <div>
+                                <input required type='text' [(ngModel)]="employeeDetails.permanentAddress"
+                                    name="PermanentAddress">
+                                <label>Permanent Address</label>
+                                <hr>
+                            </div>
+                        </fieldset>
+                    </li>
+                    <li>
+                        <fieldset class='material'>
+                            <div>
+                                <input required type='text' [(ngModel)]="employeeDetails.current_Residential_Address"
+                                    name="Current_Residential_Address">
+                                <label>Current/Residential Address</label>
+                                <hr>
+                            </div>
+                        </fieldset>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Employment Information Section -->
+            <section id='privacy'>
+                <ul>
+                    <li>
+                        <fieldset class='material'>
+                            <div>
+                                <input required type='text' [(ngModel)]="employeeDetails.emp_id" name="emp_id">
+                                <label>Employee ID</label>
+                                <hr>
+                            </div>
+                        </fieldset>
+                    </li>
+                    <li>
+                        <fieldset class='material'>
+                            <div>
+                                <input required type='text' [(ngModel)]="employeeDetails.department_Project"
+                                    name="Department_Project">
+                                <label>Department/Project</label>
+                                <hr>
+                            </div>
+                        </fieldset>
+                    </li>
+                    <li>
+                        <fieldset class='material'>
+                            <div>
+                                <input required type='text' [(ngModel)]="employeeDetails.designation"
+                                    name="Designation">
+                                <label>Designation</label>
+                                <hr>
+                            </div>
+                        </fieldset>
+                    </li>
+                    <li>
+                        <fieldset class='material'>
+                            <div>
+                                <input required type='text' [(ngModel)]="employeeDetails.hiredDate" name="hiredDate">
+                                <label>Date of Joining</label>
+                                <hr>
+                            </div>
+                        </fieldset>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Professional Details Section -->
+            <section id='advanced'>
+                <ul>
+                    <li>
+                        <fieldset class='material'>
+                            <div>
+                                <input required type='text' [(ngModel)]="employeeDetails.educationalQualifications"
+                                    name="EducationalQualifications">
+                                <label>Educational Qualifications</label>
+                                <hr>
+                            </div>
+                        </fieldset>
+                    </li>
+                    <li>
+                        <fieldset class='material'>
+                            <div>
+                                <input required type='text' [(ngModel)]="employeeDetails.previousEmploymentHistory"
+                                    name="PreviousEmploymentHistory">
+                                <label>Previous Employment History</label>
+                                <hr>
+                            </div>
+                        </fieldset>
+                    </li>
+                    <li>
+                        <fieldset class='material'>
+                            <div>
+                                <input required type='text' [(ngModel)]="employeeDetails.skillsAndCompetencies"
+                                    name="SkillsAndCompetencies">
+                                <label>Skills and Competencies</label>
+                                <hr>
+                            </div>
+                        </fieldset>
+                    </li>
+                    <li>
+                        <fieldset class='material'>
+                            <div>
+                                <input required type='text' [(ngModel)]="employeeDetails.certificationsAndTraining"
+                                    name="CertificationsAndTraining">
+                                <label>Certifications and Training</label>
+                                <hr>
+                            </div>
+                        </fieldset>
+                    </li>
+                    <li>
+                        <fieldset class='material'>
+                            <div>
+                                <input required type='text' [(ngModel)]="employeeDetails.languagesKnown"
+                                    name="LanguagesKnown">
+                                <label>Languages Known</label>
+                                <hr>
+                            </div>
+                        </fieldset>
+                    </li>
+                </ul>
+            </section>
+        </form>
+    </main>
+    <!-- Constant Footer -->
+    <footer class="footer">
+        <fieldset class='material-button center'>
+            <div>
+                <button class='save' (click)="onSaveClick(employeeForm)"
+                   >Save</button>
+            </div>
+        </fieldset>
+    </footer>
+</div>

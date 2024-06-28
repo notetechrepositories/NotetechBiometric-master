@@ -1,0 +1,254 @@
+<div class="h-screen flex-grow-1 overflow-y-lg-auto">
+    <!-- Header -->
+    <header class="bg-surface-primary border-bottom pt-6">
+        <div class="container-fluid">
+            <div class="mb-npx">
+                <div class="row align-items-center">
+                    <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                    <a routerLink="/admin"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                        <h1 class="h2 mb-0 ls-tight" id="welcome-name">Attendance Register</h1>
+                    </div>
+                    <!-- Actions -->
+                    <div class="col-sm-6 col-12 text-sm-end">
+                        <div class="mx-0">
+                            <a class="btn d-inline-flex btn-sm btn-primary" (click)="fileInput.click()">
+                                <i class="bi bi-plus"></i>
+                                <input type="file" #fileInput (change)="onFileChange($event)" accept=".xlsx, .xls"
+                                    style="display: none;">
+                            </a>
+                            <button class="btn btn-upload btn-sm mx-1" (click)="uploadfile()">Upload</button>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Nav -->
+                <ul class="nav nav-tabs mt-4 overflow-x border-0">
+                </ul>
+            </div>
+        </div>
+    </header>
+    <!-- Main -->
+    <main class="py-6 bg-surface-secondary">
+        <div class="container-fluid">
+            <!-- Card stats -->
+            <div class="row g-6 mb-6">
+                <div class="cards" style="max-width: 100%;">
+                    <div class="card shadow border-0">
+                        <div class="card-body">
+                            <p-table [value]="Attendance" dataKey="id" editMode="row"
+                                [tableStyle]="{'min-width': '50rem'}">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>Emp Code</th>
+                                        <th>Name</th>
+                                        <th> Opening Balance</th>
+                                        <th>Year (2024)</th>
+                                        <th>Jan</th>
+                                        <th>Feb</th>
+                                        <th>Mar </th>
+                                        <th>Apr</th>
+                                        <th>May</th>
+                                        <th>Jun</th>
+                                        <th>Jul</th>
+                                        <th>Aug</th>
+                                        <th>Sep</th>
+                                        <th>Octr</th>
+                                        <th>Nov</th>
+                                        <th>Dec</th>
+                                        <th></th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-Attendance let-editing="editing" let-ri="rowIndex">
+                                    <tr [pEditableRow]="Attendance">
+                                        <td>
+                                            <p-cellEditor>
+                                                <ng-template pTemplate="input">
+                                                    <input pInputText type="text" [(ngModel)]="Attendance.emp_id">
+                                                </ng-template>
+                                                <ng-template pTemplate="output">
+                                                    {{Attendance.emp_id}}
+                                                </ng-template>
+                                            </p-cellEditor>
+                                        </td>
+                                        <td>
+                                            <p-cellEditor>
+                                                <ng-template pTemplate="input">
+                                                    <input pInputText type="text" [(ngModel)]="Attendance.Name"
+                                                        required>
+                                                </ng-template>
+                                                <ng-template pTemplate="output">
+                                                    {{Attendance.Name}}
+                                                </ng-template>
+                                            </p-cellEditor>
+                                        </td>
+
+                                        <td>
+                                            <p-cellEditor>
+                                                <ng-template pTemplate="input">
+                                                    <input pInputText type="text"
+                                                        [(ngModel)]="Attendance.Opening_Balance">
+                                                </ng-template>
+                                                <ng-template pTemplate="output">
+                                                    {{Attendance.Opening_Balance}}
+                                                </ng-template>
+                                            </p-cellEditor>
+                                        </td>
+                                        <td>
+                                            <p-cellEditor>
+                                                <ng-template pTemplate="input">
+                                                    <input pInputText type="text" [(ngModel)]="Attendance.Year ">
+                                                </ng-template>
+                                                <ng-template pTemplate="output">
+                                                    {{Attendance.Year}}
+                                                </ng-template>
+                                            </p-cellEditor>
+                                        </td>
+                                        <td>
+                                            <p-cellEditor>
+                                                <ng-template pTemplate="input">
+                                                    <input pInputText type="text" [(ngModel)]="Attendance.Jan">
+                                                </ng-template>
+                                                <ng-template pTemplate="output">
+                                                    {{Attendance.Jan}}
+                                                </ng-template>
+                                            </p-cellEditor>
+                                        </td>
+                                        <td>
+                                            <p-cellEditor>
+                                                <ng-template pTemplate="input">
+                                                    <input pInputText type="text" [(ngModel)]="Attendance.Feb">
+                                                </ng-template>
+                                                <ng-template pTemplate="output">
+                                                    {{Attendance.Feb}}
+                                                </ng-template>
+                                            </p-cellEditor>
+                                        </td>
+                                        <td>
+                                            <p-cellEditor>
+                                                <ng-template pTemplate="input">
+                                                    <input pInputText type="text" [(ngModel)]="Attendance.March">
+                                                </ng-template>
+                                                <ng-template pTemplate="output">
+                                                    {{Attendance.March}}
+                                                </ng-template>
+                                            </p-cellEditor>
+                                        </td>
+                                        <td>
+                                            <p-cellEditor>
+                                                <ng-template pTemplate="input">
+                                                    <input pInputText type="text" [(ngModel)]="Attendance.April">
+                                                </ng-template>
+                                                <ng-template pTemplate="output">
+                                                    {{Attendance.April}}
+                                                </ng-template>
+                                            </p-cellEditor>
+                                        </td>
+                                        <td>
+                                            <p-cellEditor>
+                                                <ng-template pTemplate="input">
+                                                    <input pInputText type="text" [(ngModel)]="Attendance.May">
+                                                </ng-template>
+                                                <ng-template pTemplate="output">
+                                                    {{Attendance.May}}
+                                                </ng-template>
+                                            </p-cellEditor>
+                                        </td>
+                                        <td>
+                                            <p-cellEditor>
+                                                <ng-template pTemplate="input">
+                                                    <input pInputText type="text" [(ngModel)]="Attendance.June">
+                                                </ng-template>
+                                                <ng-template pTemplate="output">
+                                                    {{Attendance.June}}
+                                                </ng-template>
+                                            </p-cellEditor>
+                                        </td>
+                                        <td>
+                                            <p-cellEditor>
+                                                <ng-template pTemplate="input">
+                                                    <input pInputText type="text" [(ngModel)]="Attendance.July">
+                                                </ng-template>
+                                                <ng-template pTemplate="output">
+                                                    {{Attendance.July}}
+                                                </ng-template>
+                                            </p-cellEditor>
+                                        </td>
+                                        <td>
+                                            <p-cellEditor>
+                                                <ng-template pTemplate="input">
+                                                    <input pInputText type="text" [(ngModel)]="Attendance.August">
+                                                </ng-template>
+                                                <ng-template pTemplate="output">
+                                                    {{Attendance.August}}
+                                                </ng-template>
+                                            </p-cellEditor>
+                                        </td>
+                                        <td>
+                                            <p-cellEditor>
+                                                <ng-template pTemplate="input">
+                                                    <input pInputText type="text" [(ngModel)]="Attendance.Sept">
+                                                </ng-template>
+                                                <ng-template pTemplate="output">
+                                                    {{Attendance.Sept}}
+                                                </ng-template>
+                                            </p-cellEditor>
+                                        </td>
+                                        <td>
+                                            <p-cellEditor>
+                                                <ng-template pTemplate="input">
+                                                    <input pInputText type="text" [(ngModel)]="Attendance.Oct">
+                                                </ng-template>
+                                                <ng-template pTemplate="output">
+                                                    {{Attendance.Oct}}
+                                                </ng-template>
+                                            </p-cellEditor>
+                                        </td>
+                                        <td>
+                                            <p-cellEditor>
+                                                <ng-template pTemplate="input">
+                                                    <input pInputText type="text" [(ngModel)]="Attendance.November">
+                                                </ng-template>
+                                                <ng-template pTemplate="output">
+                                                    {{Attendance.November}}
+                                                </ng-template>
+                                            </p-cellEditor>
+                                        </td>
+                                        <td>
+                                            <p-cellEditor>
+                                                <ng-template pTemplate="input">
+                                                    <input pInputText type="text" [(ngModel)]="Attendance.December">
+                                                </ng-template>
+                                                <ng-template pTemplate="output">
+                                                    {{Attendance.December}}
+                                                </ng-template>
+                                            </p-cellEditor>
+                                        </td>
+                                        <td>
+                                            <div class="flex align-items-center justify-content-center gap-2">
+                                                <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow
+                                                    icon="pi pi-pencil" (click)="onRowEditInit(Attendance)"
+                                                    class="p-button-rounded p-button-text"></button>
+                                                <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow
+                                                    icon="pi pi-check" (click)="onRowEditSave(Attendance)"
+                                                    class="p-button-rounded p-button-text p-button-success mr-2"></button>
+                                                <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow
+                                                    icon="pi pi-times" (click)="onRowEditCancel(Attendance, ri)"
+                                                    class="p-button-rounded p-button-text p-button-danger"></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                        <div class="mt-2 mb-0 text-sm">
+                            <span class="badge badge-pill bg-soft-success text-success me-2">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+          
+        </div>
+    </main>
+</div>

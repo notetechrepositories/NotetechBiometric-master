@@ -1,0 +1,177 @@
+<div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-12 col-xl-11">
+            <div>
+                <div class=" p-md-5">
+                    <div class="row justify-content-center">
+                        <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                            <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Register </p>
+
+                            <form #registerForm="ngForm" class="mx-1 mx-md-4" (ngSubmit)="submit()">
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                    <div class="form-outline flex-fill mb-0">
+                                        <input type="text" id="form3Example1c" ngModel required class="form-control"
+                                            name="firstName" [(ngModel)]="firstName" />
+                                        <label class="form-label" for="form3Example1c">First Name</label>
+                                    </div>
+                                </div>
+                                <div class="errors"
+                                    *ngIf="registerForm.controls['firstName']?.touched && registerForm.controls['firstName'].errors?.['required']">
+                                    first Name required
+                                </div>
+
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                    <div class="form-outline flex-fill mb-0">
+                                        <input type="text" id="form3Example1c" ngModel required class="form-control"
+                                            name="lastName" [(ngModel)]="lastName" />
+                                        <label class="form-label" for="form3Example1c">Last Name</label>
+                                    </div>
+                                </div>
+                                <div class="errors"
+                                    *ngIf="registerForm.controls['lastName']?.touched && registerForm.controls['lastName'].errors?.['required']">
+                                    last Name required
+                                </div>
+
+                                <!-- <div class="d-flex flex-row align-items-center mb-4">
+                                    <i class="fa fa-id-card fa-lg me-3 fa-fw" aria-hidden="true"></i>
+                                    <div class="form-outline flex-fill mb-0">
+                                        <input type="email" id="form3Example3c" ngModel required class="form-control"
+                                            name="notetchId" [(ngModel)]="notetechId" />
+                                        <label class="form-label" for="form3Example3c">Notetech Id</label>
+
+
+                                        <a class="display-id" href="#"
+                                            (click)="toggleDropdown(); $event.preventDefault()">Click here to
+                                            know Your Employee ID</a>
+                                        <div *ngIf="showDropdown">
+                                            <select class="form-control">
+                                                <option value="" disabled selected>Choose an Employee ID</option>
+                                                <option *ngFor="let employee of employees" [value]="employee.emp_id">
+                                                    {{ employee.emp_id }} - {{ employee.employeeName }}
+                                                </option>
+                                            </select>
+
+                                        </div>
+                                        <div class="errors" style="margin-top: 5px;margin-left: -1px;"
+                                            *ngIf="registerForm.controls['notetchId']?.touched && registerForm.controls['notetchId'].errors?.['required']">
+                                            Notetech Id required
+                                        </div>
+
+                                    </div>
+                                </div> -->
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <i class="fa fa-id-card fa-lg me-3 fa-fw" aria-hidden="true"></i>
+                                    <div class="form-outline flex-fill mb-0" (click)="toggleDropdown()">
+                                        <input type="text" id="form3Example3c" class="form-control" name="notetechId" style="background-color: white;"
+                                            [(ngModel)]="notetechId" readonly />
+                                        <label class="form-label" for="form3Example3c">Notetech Id</label>
+                                        <div class="dropdown-content" *ngIf="showDropdown">
+                                            <ul class="list-group">
+                                                <li *ngFor="let employee of employees"
+                                                    (mousedown)="selectEmployeeId(employee.emp_id)"
+                                                    class="list-group-item">
+                                                    {{ employee.emp_id }} - {{ employee.employeeName }}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="errors" style="margin-top: 5px; margin-left: -1px;"
+                                            *ngIf="registerForm.controls['notetechId']?.touched && registerForm.controls['notetechId'].errors?.['required']">
+                                            Notetech Id required
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <i class="fa fa-birthday-cake fa-lg me-3 fa-fw" aria-hidden="true"></i>
+                                    <div class="form-outline flex-fill mb-0">
+                                        <input type="date" id="form3Example3c" ngModel required class="form-control"
+                                            name="birthDay" [(ngModel)]="birthDate" />
+                                        <label class="form-label" for="form3Example3c"> BirthDay</label>
+                                    </div>
+                                </div>
+                                <div class="errors"
+                                    *ngIf="registerForm.controls['birthDay']?.touched && registerForm.controls['birthDay'].errors?.['required']">
+                                    BirthDay Id required
+                                </div>
+
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <i class="fa fa-calendar fa-lg me-3 fa-fw" aria-hidden="true"></i>
+                                    <div class="form-outline flex-fill mb-0">
+                                        <input type="date" id="form3Example3c" ngModel required class="form-control"
+                                            name="hiredDate" [(ngModel)]="hiredDate" />
+                                        <label class="form-label" for="form3Example3c"> Hired Date</label>
+                                    </div>
+                                </div>
+                                <div class="errors"
+                                    *ngIf="registerForm.controls['hiredDate']?.touched && registerForm.controls['hiredDate'].errors?.['required']">
+                                    HiredDate Id required
+                                </div>
+
+
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                                    <div class="form-outline flex-fill mb-0">
+                                        <input type="text" id="form3Example4c" ngModel required class="form-control"
+                                            name="username" [(ngModel)]="userName" />
+                                        <label class="form-label" for="form3Example4c">UserName</label>
+                                    </div>
+                                </div>
+                                <div class="errors"
+                                    *ngIf="registerForm.controls['username']?.touched && registerForm.controls['username'].errors?.['required']">
+                                    username required
+                                </div>
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                                    <div class="form-outline flex-fill mb-0">
+
+                                        <input type="password" id="form3Example4cd" ngModel required
+                                            class="form-control" name="password" [(ngModel)]="userPassword"
+                                            [type]="showPassword ? 'text' : 'password'" />
+                                        <label class="form-label" for="form3Example4cd">Password</label>
+                                        <!-- <span class="input-group-text" (click)="togglePasswordVisibility()">
+                <i class="fas" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+            </span> -->
+
+                                    </div>
+                                </div>
+
+
+                                <div class="errors"
+                                    *ngIf="registerForm.controls['password']?.touched && registerForm.controls['password'].errors?.['required']">
+                                    Passwords required
+                                </div>
+                                <div class="d-flex flex-row align-items-center mb-4">
+                                    <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                                    <div class="form-outline flex-fill mb-0">
+                                        <input type="password" id="form3Example4cd" ngModel required
+                                            class="form-control" name="repeatPassword" [(ngModel)]="repeatPassword" />
+                                        <label class="form-label" for="form3Example4cd">Repeat your password</label>
+                                    </div>
+
+                                </div>
+
+                                <div *ngIf="password && repeatPassword && password !== repeatPassword"
+                                    style="color: red;">
+                                    Passwords do not match.
+                                </div>
+
+                                <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                    <button class="btn-register" [disabled]="!registerForm.valid">Submit</button>
+                                </div>
+                            </form>
+
+                        </div>
+                        <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                            <img src="assets/Fingerprint-cuate (1).png" class="img-fluid" alt="Sample image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,406 @@
+<!-- Dashboard -->
+<div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
+    <!-- Vertical Navbar -->
+    <nav class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg"
+        id="navbarVertical">
+        <div class="container-fluid">
+            <!-- Toggler -->
+            <button class="navbar-toggler ms-n2" type="button" data-bs-toggle="collapse"
+                data-bs-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Brand -->
+            <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="#">
+                <img src="assets/NOTETECH LOGO 1 (1).png" alt="">
+            </a>
+            <!-- User menu (mobile) -->
+            <div class="navbar-user d-lg-none">
+                <!-- Dropdown -->
+                <div class="dropdown">
+                    <!-- Toggle -->
+                    <a href="#" id="sidebarAvatar" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <div class="avatar-parent-child">
+                            <img alt="Image Placeholder"
+                                src="https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+                                class="avatar avatar- rounded-circle">
+                            <span class="avatar-child avatar-badge bg-success"></span>
+                        </div>
+                    </a>
+                    <!-- Menu -->
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="sidebarAvatar">
+                        <hr class="dropdown-divider">
+                        <a href="#" class="dropdown-item">Logout</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Collapse -->
+            <div class="collapse navbar-collapse" id="sidebarCollapse">
+                <!-- Navigation -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            <i class="bi bi-house"></i> Dashboard
+                        </a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-bar-chart"></i> Analitycs
+                        </a>
+                    </li> -->
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-chat"></i> Messages
+                            <span
+                                class="badge bg-soft-primary text-primary rounded-pill d-inline-flex align-items-center ms-auto">6</span>
+                        </a> -->
+                    <!-- </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-bookmarks"></i> Collections
+                        </a>
+                    </li> -->
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-people"></i> Users
+                        </a>
+                    </li> -->
+                </ul>
+                <!-- Divider -->
+                <hr class="navbar-divider my-5 opacity-20">
+                <!-- Navigation -->
+                <ul class="navbar-nav mb-md-4">
+                    <li>
+                        <div class="nav-link text-xs font-semibold text-uppercase text-muted ls-wide" >
+                            Request
+                            <span
+                                class="badge bg-soft-primary text-primary rounded-pill d-inline-flex align-items-center ms-4">{{count}}</span>
+                        </div>
+                    </li>
+                    <li>
+                        <a  class="nav-link d-flex align-items-center" *ngFor="let slip of monthlyslip">
+                            <div class="me-4">
+                                <div class="position-relative d-inline-block text-white">
+                                    <span class="avatar bg-soft-warning text-warning rounded-circle">{{slip.firstTwoLetters}}</span>
+                                    <span
+                                        class="position-absolute bottom-2 end-2 transform translate-x-1/2 translate-y-1/2 border-2 border-solid border-current w-3 h-3 bg-success rounded-circle"></span>
+                                </div>
+                            </div>
+                            <div >
+                                <span class="d-block text-sm font-semibold">
+                                {{ slip.name }}
+                                </span>
+                                <span class="d-block text-xs text-muted font-regular">
+                                {{ slip.request }}
+                                </span>
+                            </div>
+                            <div class="ms-auto">
+                                <i id="trash" class="bi bi-trash"></i>
+                            </div>
+                        </a>
+                    </li>
+                    <!-- <li>
+                        <a href="#" class="nav-link d-flex align-items-center">
+                            <div class="me-4">
+                                <div class="position-relative d-inline-block text-white">
+                                    <span class="avatar bg-soft-warning text-warning rounded-circle">JW</span>
+                                    <span
+                                        class="position-absolute bottom-2 end-2 transform translate-x-1/2 translate-y-1/2 border-2 border-solid border-current w-3 h-3 bg-success rounded-circle"></span>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="d-block text-sm font-semibold">
+                                    Michael Jordan
+                                </span>
+                                <span class="d-block text-xs text-muted font-regular">
+                                    Bucharest, RO
+                                </span>
+                            </div>
+                            <div class="ms-auto">
+                                <i class="bi bi-chat"></i>
+                            </div>
+                        </a>
+                    </li> -->
+                    <!-- <li>
+                        <a href="#" class="nav-link d-flex align-items-center">
+                            <div class="me-4">
+                                <div class="position-relative d-inline-block text-white">
+                                    <img alt="..."
+                                        src="https://images.unsplash.com/photo-1610899922902-c471ae684eff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
+                                        class="avatar rounded-circle">
+                                    <span
+                                        class="position-absolute bottom-2 end-2 transform translate-x-1/2 translate-y-1/2 border-2 border-solid border-current w-3 h-3 bg-danger rounded-circle"></span>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="d-block text-sm font-semibold">
+                                    Heather Wright
+                                </span>
+                                <span class="d-block text-xs text-muted font-regular">
+                                    London, UK
+                                </span>
+                            </div>
+                            <div class="ms-auto">
+                                <i class="bi bi-chat"></i>
+                            </div>
+                        </a>
+                    </li> -->
+                </ul>
+                <!-- Push content down -->
+                <div class="mt-auto"></div>
+                <!-- User (md) -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-password"></i> Change your password
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-box-arrow-left"></i> Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Main content -->
+    <div class="h-screen flex-grow-1 overflow-y-lg-auto">
+        <!-- Header -->
+        <header class="bg-surface-primary border-bottom pt-6">
+            <div class="container-fluid">
+                <div class="mb-npx">
+                    <div class="row align-items-center">
+                        <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                            <!-- Title -->
+                            <h1 class="h2 mb-0 ls-tight" id="welcome-name">Welcome Notetech Admin</h1>
+                        </div>
+                        <!-- Actions -->
+                        <div class="col-sm-6 col-12 text-sm-end">
+                            <div class="mx-n1">
+                                <a href="#" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1">
+                                    <span class=" pe-2">
+                                        <i class="bi bi-pencil"></i>
+                                    </span>
+                                    <span>Edit</span>
+                                </a>
+                                <a href="#" class="btn d-inline-flex btn-sm btn-primary mx-1">
+                                    <span class=" pe-2">
+                                        <i class="bi bi-plus"></i>
+                                    </span>
+                                    <span>Create</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Nav -->
+                    <ul class="nav nav-tabs mt-4 overflow-x border-0">
+                        <li class="nav-item ">
+                            <a href="#" class="nav-link active">All files</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a href="#" class="nav-link font-regular">Shared</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link font-regular">File requests</a>
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <!-- Main -->
+        <main class="py-6 bg-surface-secondary">
+            <div class="container-fluid">
+                <!-- Card stats -->
+                <div class="row g-6 mb-6">
+                    <div class="cards">
+                        <div class="card shadow border-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <span class="h4 font-semibold text-muted  d-block mb-2">Monthly OT</span>
+                                        <div class="ot-container">
+                                            <div>
+                                                <label for="start-date" class="date-input">Start Date:</label>
+                                                <input class="date-entry" type="date" [(ngModel)]="startDate"
+                                                    name="startDate">
+                                            </div>
+
+                                            <div>
+                                                <label for="end-date" class="date-input">End Date    : </label>
+                                                <input class="date-entry" type="date" [(ngModel)]="endDate"
+                                                    name="endDate">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <span><button class="btn-download" (click)="getmonthlyot()">click
+                                            here</button></span>
+                                </div>
+                                <div class="mt-2 mb-0 text-sm">
+                                    <span class="badge badge-pill bg-soft-success text-success me-2">
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cards">
+                        <div class="card shadow border-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <span class="h4 font-semibold text-muted  d-block mb-2">
+                                            Holidays </span>
+                                        <div class="date-input">
+                                          Holiday List :<span><button class="btn-view" onclick="window.Holidays.showModal();">View</button>
+                                            <dialog id="Holidays">
+                                                 <button onclick="window.Holidays.close();" class="x-btn">❌</button>                                                    <div class="main-wrapper">
+                                                        <main role="main">
+                                                            <div class="table-card">
+                                                                <div class="container">
+                                                                    <h1 class="table-title">Holiday Table</h1>
+                                                                    <div class="table-scroll">
+                                                                        <div class="table-wrapper">
+                                                                            <table class="sticky-table">
+                                                                                <colgroup>
+                                                                                    <col class="table-col1">
+                                                                                    <col class="table-col2">
+                                                                                    <col class="table-col3">
+                                                                                    <col class="table-col4">
+                                                                                    <col class="table-col5">
+                                                                                    <col class="table-col6">
+                                                                                </colgroup>
+                                                                                <thead class="table-head" title="Click to sort">
+                                                                                    <tr class="table-row">
+                                                                                        <th class="col-head" scope="col">Holiday Date</th>
+                                                                                        <th class="col-head" scope="col">Festival</th>
+                                                                                        <th class="col-head" scope="col">Day</th>
+                                                    
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody class="table-body" *ngFor="let Holidays of Holiday" >
+                                                                                    <tr class="table-row">
+                                                                                        <td class="cell">{{ Holidays.holidayDate | date: 'mediumDate'}}</td>
+                                                                                        <td class="cell">{{ Holidays.festival }}</td>
+                                                                                        <td class="cell">{{ Holidays.day }}</td>
+                                                                                    </tr>
+                                                                            </table>
+                                                                        </div> <!-- /.table-scroll -->
+                                                                    </div> <!-- /.table-wrapoer -->
+                                                                </div> <!-- /.table-card -->
+                                                            </div> <!-- /.container -->
+                                                        </main>
+                                                    </div> <!-- /.main-container -->
+
+                                                
+                                            </dialog>
+                                        </span>
+                                            <span><button class="btn-download" (click)="getHolidays()" >Download</button></span>
+                                        </div>
+                                        <div class="input-row" id="holiday-card">
+                                            <label for="end-date" class="date-input">Insert Holidays</label>
+                                            <div class="custom-file-upload">
+                                                <input type="file" id="file" (change)="onFileChange($event)" style="display: none;">
+                                                <label for="file">Choose File</label>
+                                                <button (click)="uploadData()" id="sub-holiday" type="button">Submit</button>
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                    </div>
+
+                                </div>
+                                <div class="mt-2 mb-0 text-sm">
+                                    <span class="badge badge-pill bg-soft-success text-success me-2">
+                                        <!-- <i class="bi bi-arrow-up me-1"></i>30% -->
+                                    </span>
+                                    <!-- <span class="text-nowrap text-xs text-muted">Since last month</span> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cards">
+                        <div class="card shadow border-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <span class="h4 font-semibold text-muted  d-block mb-2">Employee Port</span>
+                                        <div>
+                                            <label for="employees-details" class="date-input" id="employee-card">Employees
+                                                Details : <span><button class="btn-view">View</button></span>
+                                                <span><button class="btn-download">Download</button></span> </label>
+                                        </div>
+                                        <div class="employee-detail">
+                                            <label for="employee-details" class="date-input" >Attendance Register  : 
+                                            <span><button class="btn-view" id="employee-view" (click)="attendance()">View</button></span>
+                                            </label>
+                                           
+                                        </div>
+                                
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cards">
+                        <div class="card shadow border-0">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <span class="h4 font-semibold text-muted  d-block mb-2"> Notetech Related</span>
+                                        <div>
+                                            <label for="start-date" class="date-input" id="notetech-card">Notetech
+                                                Details :
+                                                <span><button class="btn-view" id="employee-view">View</button></span>
+                                                <span><input file="input" style="display: none;"><label for="file" id="insert-file">Insert File</label></span> </label>
+                                        </div>
+                                        <div class="monthlyslip">
+                                            <label for="employee-details" class="date-input">Monthly Slip :
+                                                <span><button class="btn-view" id="employee-view">View</button></span>
+                                                <!-- <span><button class="btn-download">Download</button></span>  -->
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card shadow border-0 mb-7">
+                    <div class="card-header">
+                        <h3 class="sub-titile mb-0">Attendance</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover table-nowrap">
+                            <p-table [value]="userAttendance" [paginator]="true" [rows]="20"
+                                styleClass="p-datatable-striped" [showCurrentPageReport]="true"
+                                [tableStyle]="{ 'min-width': '50rem' }"
+                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                                [rowsPerPageOptions]="[10, 25, 50]">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th class="field-name" scope="col">Name</th>
+                                        <th class="field-name" scope="col">Notetech Id</th>
+                                        <th class="field-name" scope="col">Date</th>
+                                        <th class="field-name" scope="col">Check-In Time</th>
+                                        <th class="field-name" scope="col">Check-Out Time</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-userAttendance>
+                                    <tr>
+                                        <td>{{ userAttendance.employeeName }}</td>
+                                        <td>{{ userAttendance.emp_id }}</td>
+                                        <td>{{ userAttendance.work_date |date: 'dd-MM-yyyy'}}</td>
+                                        <td>{{ userAttendance.check_in_time}}</td>
+                                        <td>{{ userAttendance.check_out_time}}</td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>

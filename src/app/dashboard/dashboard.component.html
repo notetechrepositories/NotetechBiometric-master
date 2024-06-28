@@ -1,0 +1,286 @@
+<body>
+    <main>
+        <nav class="main-menu">
+            <h1 id="custom-headline">NOTE PORTAL</h1>
+            <ul>
+                <li class="nav-item active">
+                    <b></b>
+                    <b></b>
+                    <a>
+                        <i class="fa fa-house nav-icon"></i>
+                        <span class="nav-text">Dashbard</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <section class="content">
+            <div class="left-content">
+                <div class="activities">
+                    <h1>Biometric Activities</h1>
+                    <div class="activity-container">
+                        <div *ngIf="userAttendance && userAttendance.length > 0; else noDataTemplate">
+                            <div class="card">
+                                <div class="card-body">
+                                    <p-table [value]="userAttendance" styleClass="p-datatable-striped"
+                                        [tableStyle]="{ 'min-width': '50rem' }">
+                                        <ng-template pTemplate="header">
+                                            <tr>
+                                                <th>Work Date</th>
+                                                <th>Check-In Time</th>
+                                                <th>Check-Out Time</th>
+                                                <th>Overtime</th>
+                                            </tr>
+                                        </ng-template>
+                                        <ng-template pTemplate="body" let-userAttendance>
+                                            <tr>
+                                                <td>{{ userAttendance.work_date | date: 'mediumDate' }}</td>
+                                                <td>{{ userAttendance.check_in_time }}</td>
+                                                <td>{{ userAttendance.check_out_time }}</td>
+                                                <td>{{ userAttendance.over_time }}</td>
+                                            </tr>
+                                        </ng-template>
+                                    </p-table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <ng-template #noDataTemplate>
+                            <div class="card">
+                                <div class="card-body">
+                                    <p>No data available. Please check back later.</p>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </div>
+                </div>
+                <div class="left-bottom ">
+                    <div class="weekly-schedule">
+                        <h1>Upcoming Holidays</h1>
+                        <div class="container" *ngIf="Holiday.length >0">
+                            <div class="calendar" *ngFor="let holidays of Holiday">
+                                <div class="">
+                                    <div class="holidayDate">
+                                        {{ holidays.holidayDate | date:'fullDate' }}
+                                    </div>
+                                    <div class="activity">
+                                        <h4> {{holidays.festival}}
+                                        </h4>
+                                        <div class="participants">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="personal-bests">
+                        <!-- <h1>Personal Space</h1> -->
+                        <div class="card-container">
+                            <div class="card-body">
+                                <div class="card " id="card-1" *ngIf="userAttendance && userAttendance.length > 0">
+                                    <a class="primary" onclick="window.dialog.showModal();" id="monthly-ot">Monthly
+                                        OT</a>
+                                    <dialog id="dialog"
+                                        [ngStyle]="showSecondCard ? {'width': '80vw', 'max-width': '1000px'} : {'width': 'auto'}">
+                                        <!-- First Card -->
+                                        <div *ngIf="showFirstCard" class="monthly-ot-card">
+                                            <h4 class="card-title">Monthly OT</h4>
+                                            <h5 class="card-subtitle">Select Date From and To</h5>
+                                            <form class="date-range-form">
+                                                <div class="form-group start-date">
+                                                    <label for="start-date">Start Date:</label>
+                                                    <input id="start-date" type="date" [(ngModel)]="startDate"
+                                                        name="startDate">
+                                                </div>
+                                                <div class="form-group end-date">
+                                                    <label for="end-date">End Date:</label>
+                                                    <input id="end-date" type="date" [(ngModel)]="endDate"
+                                                        name="endDate">
+                                                </div>
+                                                <button class="btn btn-primary" type="button" id="view-btn"
+                                                    (click)="otView()" [disabled]="!startDate || !endDate">View</button>
+                                            </form>
+                                        </div>
+
+                                        <button onclick="window.dialog.close();" class="x">❌</button>
+
+                                        <!-- Second Card -->
+                                        <div *ngIf="showSecondCard" id="second-card">
+                                            <p-table [value]="monthlyOt" class="second-card"
+                                                [tableStyle]="{ 'width': '50rem', 'height': '20rem' }">
+                                                <ng-template pTemplate="header">
+                                                    <tr>
+                                                        <th>Date</th>
+                                                        <th>Check In Time</th>
+                                                        <th>Check In Out</th>
+                                                        <th>over Time</th>
+                                                    </tr>
+                                                </ng-template>
+                                                <ng-template pTemplate="body" let-monthlyOt>
+                                                    <tr>
+                                                        <td>{{ monthlyOt.work_date }}</td>
+                                                        <td>{{ monthlyOt.check_in_time }}</td>
+                                                        <td>{{ monthlyOt.check_out_time }}</td>
+                                                        <td>{{ monthlyOt.over_time }}</td>
+                                                    </tr>
+                                                </ng-template>
+                                            </p-table>
+                                            <button class="btn-download " type="button" id="mark"
+                                                (click)="getmonthlyot()">Download xls</button>
+                                            <button (click)="closeDialog()" aria-label="close" class="x">❌</button>
+                                        </div>
+                                    </dialog>
+                                </div>
+                                <div class="card" id="card-1">
+                                    <a class="primary" class="primary" (click)="monthlySlip()">Monthly Slip</a>
+                                </div>
+                                <div class="card" id="card-1">
+                                    <a class="primary" (click)="getUanNumber()">UAN Number</a>
+                                </div>
+                                <div class="card" id="card-1">
+                                    <a class="primary" (click)="getinsurance()">Insurance Number</a>
+                                </div>
+                                <div class="card" id="card-1">
+                                    <a class="primary" onclick="window.leave.showModal();" id="monthly-ot">Leave Sheet
+                                    </a>
+                                    <dialog id="leave">
+                                        <div class="card " style="height: 80px;">
+                                            <div class="card-body">
+                                                <p-table [value]="Attendance" [tableStyle]="{ 'width': '100rem' }">
+                                                    <ng-template pTemplate="header" let-columns>
+                                                        <tr>
+                                                            <th>Emp Code</th>
+                                                            <th>Name</th>
+                                                            <th> Opening Balance</th>
+                                                            <th>Year (2024)</th>
+                                                            <th>Jan</th>
+                                                            <th>Feb</th>
+                                                            <th>March </th>
+                                                            <th>April</th>
+                                                            <th>May</th>
+                                                            <th>June</th>
+                                                            <th>July</th>
+                                                            <th>Aug</th>
+                                                            <th>Sept</th>
+                                                            <th>Oct</th>
+                                                            <th>Nov</th>
+                                                            <th>Dec</th>
+                                                        </tr>
+                                                    </ng-template>
+                                                    <ng-template pTemplate="body" let-Attendance let-columns="columns">
+                                                        <tr>
+                                                            <td>{{Attendance.emp_id}}</td>
+                                                            <td>{{Attendance.Name }}</td>
+                                                            <td>{{Attendance.Opening_Balance}}</td>
+                                                            <td>{{Attendance.Year }}</td>
+                                                            <td>{{Attendance.Jan}}</td>
+                                                            <td>{{Attendance.Feb}}</td>
+                                                            <td>{{Attendance.March}}</td>
+                                                            <td>{{Attendance.April}}</td>
+                                                            <td>{{Attendance.May}}</td>
+                                                            <td>{{Attendance.June}}</td>
+                                                            <td>{{Attendance.July}}</td>
+                                                            <td>{{Attendance.August}}</td>
+                                                            <td>{{Attendance.Sept}}</td>
+                                                            <td>{{Attendance.Oct}}</td>
+                                                            <td>{{Attendance.November}}</td>
+                                                            <td>{{Attendance.December}}</td>
+                                                        </tr>
+                                                    </ng-template>
+                                                </p-table>
+                                            </div>
+                                        </div>
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="chart-container">
+                                                    <canvas baseChart [data]="pieChartData" [type]="pieChartType"
+                                                        [options]="{
+                                                responsive: true,
+                                                maintainAspectRatio: false
+                                              }">
+                                                    </canvas>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <button onclick="window.leave.close();" class="x">❌</button>
+
+                                    </dialog>
+                                </div>
+
+                                <!-- <div class="card" id="card-1">
+                                    <a class="primary" onclick="window.leaveRequest.showModal();" id="monthly-ot">Leave
+                                        Request
+                                    </a>
+                                    <dialog id="leaveRequest">
+                                        <form class="card" class="leave-request" onSubmit="submitForm(); return false;">
+                                            <div class="card-body" class="leave-request-body">
+                                                <input type="email" placeholder="Select To Email" name="to" required>
+                                                <input type="email" placeholder="Select Bcc Email" name="bcc">
+                                                <input type="text" placeholder="Enter subject" name="subject" required>
+                                                <input type="text" placeholder="Enter Your Reason" name="reason" class="text-cls" required>
+                                                <button type="submit">Submit</button>
+                                            </div>
+                                        </form>
+                                        <button onclick="document.getElementById('leaveRequest').close();"
+                                            class="x">❌</button>
+                                    </dialog>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-content">
+                <div class="user-info">
+                    <div class="welcome-container">
+                        <h4>Welcome <a class="User-name" (click)="showModal(profileModal)"> {{ firstName }} </a>
+                            <dialog class="custom-dialog" #profileModal>
+                                <app-user-profile></app-user-profile>
+                                <button (click)="closeModal(profileModal)" class="x">❌</button>
+                            </dialog>
+
+                            <a href="" (click)="logout()">
+                                <i class="fas fa-sign-out-alt" title="Logout">
+                                </i>
+                            </a>
+                        </h4>
+                    </div>
+                </div>
+                <div class="active-calories" *ngIf="userAttendance">
+                    <h5 style="margin-left:-23%">{{ currentDate | date:'EEEE, MMMM d, y, h:mm:ss a' }}</h5>
+                    <h3 style="align-self: flex-start">Check In Time : {{CheckInTime}}</h3>
+                    <!-- <div *ngFor="let AnniversariesDetails of AnniversariesDetails">
+                        <p> Next Anniversary: {{AnniversariesDetails.next_anniversary | date}} {{AnniversariesDetails.employeeName}}</p>
+                    </div> -->
+                </div>
+
+                <div class="friends-activity" *ngIf="AnniversariesDetails?.length && Holiday?.length">
+                    <h1>Notetech Calendar</h1>
+                    <mat-calendar [(ngModel)]="date" [dateClass]="dateClass" (selectedChange)="onDateSelect($event!)">
+                    </mat-calendar>
+                </div>
+
+                <div class="birthday-container">
+                    <div class="card l-bg-cherry" style="height: 140px;width: 350px;">
+                        <div class="card-statistic-3 p-4">
+                            <div class="card-icon card-icon-large">
+                                <img src="assets/birthday-cake.png" alt="Birthday Cake">
+                            </div>
+                            <div class="row align-items-center  d-flex">
+                                <div class="col-8" *ngFor="let user of users">
+                                    <h2 id="birthday-text">
+                                        <h4 style="margin-left: -10px; margin-top: -10px;">Up <br>Coming <br> Birthday
+                                        </h4>
+                                    </h2>
+                                    <div class="birth-Name ">
+                                        {{ user.firstName }} ({{ user.next_birthday|date: 'dd-MM-yyyy'}})
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>

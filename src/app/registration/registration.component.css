@@ -1,0 +1,70 @@
+.btn-register {
+    font-family: "Asap", sans-serif;
+    cursor: pointer;
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    width: 80px;
+    border: 0;
+    padding: 10px 0;
+    margin-top: 10px;
+    margin-left: -5px;
+    border-radius: 5px;
+    background-color: #8ecae6;
+    -webkit-transition: background-color 300ms;
+    -moz-transition: background-color 300ms;
+    transition: background-color 300ms;
+}
+
+.btn-register:hover {
+    background-color: #f24353;
+}
+.errors{
+    color: #f24353;
+    margin-left: 10%;
+    margin-top: -25px;
+    margin-bottom: 8px
+}
+.display-id{
+    margin-left: 7px;
+    text-decoration: none;
+    color: #90caf9;
+}
+.form-outline {
+    position: relative;
+}
+
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    max-height: 200px;
+    overflow-y: auto;
+    display: none;
+    /* Hide by default */
+}
+
+.form-outline:focus-within .dropdown-content,
+.form-outline.show .dropdown-content {
+    display: block;
+    /* Show when focused or clicked */
+}
+
+.list-group {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.list-group-item {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.list-group-item:hover {
+    background-color: #f0f0f0;
+}
